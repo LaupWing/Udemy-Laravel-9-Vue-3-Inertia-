@@ -14,7 +14,7 @@ return new class extends Migration
       Schema::table('listings', function (Blueprint $table) {
          $table->unsignedTinyInteger("beds");
          $table->unsignedTinyInteger("baths");
-         $table->unsignedTinyInteger("area");
+         $table->unsignedSmallInteger("area");
          $table->tinyText("city");
          $table->tinyText("code");
          $table->tinyText("street");
@@ -30,7 +30,7 @@ return new class extends Migration
    {
       Schema::table('listings', function (Blueprint $table) {
          Schema::dropColumns("listings", [
-            "beds", "bads", "area", "city", "code", "street", "street_number", "price"
+            "beds", "baths", "area", "city", "code", "street", "street_number", "price"
          ]);
       });
    }
