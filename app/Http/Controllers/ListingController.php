@@ -37,10 +37,10 @@ class ListingController extends Controller
    /**
     * Display the specified resource.
     */
-   public function show(string $id)
+   public function show(Listing $listing)
    {
-      return inertia("Listing/Index", [
-         "listings" => Listing::all()
+      return inertia("Listing/Show", [
+         "listings" => $listing
       ]);
    }
 
