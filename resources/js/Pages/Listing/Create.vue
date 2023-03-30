@@ -1,44 +1,44 @@
 <template>
-   <form>
+   <form @submit.prevent="create">
       <div>
          <div>
             <label>Beds</label>
-            <input v-model.number="form.beds" type="text" />
+            <input v-model.number="formData.beds" type="text" />
          </div>
 
          <div>
             <label>Baths</label>
-            <input v-model.number="form.baths" type="text" />
+            <input v-model.number="formData.baths" type="text" />
          </div>
 
          <div>
             <label>Area</label>
-            <input v-model.number="form.area" type="text" />
+            <input v-model.number="formData.area" type="text" />
          </div>
 
          <div>
             <label>City</label>
-            <input v-model="form.city" type="text" />
+            <input v-model="formData.city" type="text" />
          </div>
 
          <div>
             <label>Post Code</label>
-            <input v-model="form.code" type="text" />
+            <input v-model="formData.code" type="text" />
          </div>
 
          <div>
             <label>Street</label>
-            <input v-model="form.street" type="text" />
+            <input v-model="formData.street" type="text" />
          </div>
 
          <div>
             <label>Street Nr</label>
-            <input v-model.number="form.street_nr" type="text" />
+            <input v-model.number="formData.street_number" type="text" />
          </div>
 
          <div>
             <label>Price</label>
-            <input v-model.number="form.price" type="text" />
+            <input v-model.number="formData.price" type="text" />
          </div>
 
          <div>
@@ -49,7 +49,21 @@
 </template>
 
 <script setup>
+import { useForm, router } from "@inertiajs/vue3"
 
+
+const formData = useForm({
+   beds: 0,
+   baths: 0,
+   area: 0,
+   city: null,
+   street: null,
+   code: null,
+   street_number: null,
+   price: 0
+})
+
+const create = () => router.post("/listing", formData)
 </script>
 
 <style scoped>
