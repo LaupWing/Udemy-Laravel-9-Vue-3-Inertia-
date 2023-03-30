@@ -31,7 +31,9 @@ class ListingController extends Controller
     */
    public function store(Request $request)
    {
-      //
+      Listing::create($request->all());
+
+      return redirect()->route("listing.index");
    }
 
    /**
@@ -40,7 +42,7 @@ class ListingController extends Controller
    public function show(Listing $listing)
    {
       return inertia("Listing/Show", [
-         "listings" => $listing
+         "listing" => $listing
       ]);
    }
 
