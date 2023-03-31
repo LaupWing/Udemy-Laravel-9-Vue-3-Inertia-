@@ -5,64 +5,64 @@
          <div>
             <label>Beds</label>
             <input v-model.number="formData.beds" type="text" />
-            <div v-if="formData.errors.beds">
-               {{ formData.errors.beds }}
+            <div v-if="errors.beds">
+               {{ errors.beds }}
             </div>
          </div>
 
          <div>
             <label>Baths</label>
             <input v-model.number="formData.baths" type="text" />
-            <div v-if="formData.errors.baths">
-               {{ formData.errors.baths }}
+            <div v-if="errors.baths">
+               {{ errors.baths }}
             </div>
          </div>
 
          <div>
             <label>Area</label>
             <input v-model.number="formData.area" type="text" />
-            <div v-if="formData.errors.area">
-               {{ formData.errors.area }}
+            <div v-if="errors.area">
+               {{ errors.area }}
             </div>
          </div>
 
          <div>
             <label>City</label>
             <input v-model="formData.city" type="text" />
-            <div v-if="formData.errors.city">
-               {{ formData.errors.city }}
+            <div v-if="errors.city">
+               {{ errors.city }}
             </div>
          </div>
 
          <div>
             <label>Post Code</label>
             <input v-model="formData.code" type="text" />
-            <div v-if="formData.errors.code">
-               {{ formData.errors.code }}
+            <div v-if="errors.code">
+               {{ errors.code }}
             </div>
          </div>
 
          <div>
             <label>Street</label>
             <input v-model="formData.street" type="text" />
-            <div v-if="formData.errors.street">
-               {{ formData.errors.street }}
+            <div v-if="errors.street">
+               {{ errors.street }}
             </div>
          </div>
 
          <div>
             <label>Street Nr</label>
             <input v-model.number="formData.street_number" type="text" />
-            <div v-if="formData.errors.street_number">
-               {{ formData.errors.street_number }}
+            <div v-if="errors.street_number">
+               {{ errors.street_number }}
             </div>
          </div>
 
          <div>
             <label>Price</label>
             <input v-model.number="formData.price" type="text" />
-            <div v-if="formData.errors.price">
-               {{ formData.errors.price }}
+            <div v-if="errors.price">
+               {{ errors.price }}
             </div>
          </div>
 
@@ -76,7 +76,9 @@
 <script setup>
 import { useForm, router } from "@inertiajs/vue3"
 
-
+defineProps({
+   errors: Object
+})
 const formData = useForm({
    beds: 0,
    baths: 0,
