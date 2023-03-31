@@ -11,9 +11,8 @@
 import { Link, usePage } from "@inertiajs/vue3"
 import { computed, ref } from "vue"
 
-const page = usePage()
 
-const flashMessage = computed(() => page.props.flash?.success)
+const flashMessage = computed(() => usePage().props.flash?.success)
 
 </script>
 
