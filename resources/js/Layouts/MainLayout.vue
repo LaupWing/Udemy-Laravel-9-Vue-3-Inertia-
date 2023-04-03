@@ -9,7 +9,7 @@
                <Link :href="route('listing.index')">LaraZillow</Link>
             </div>
             <div>
-               <Link class="btn-primary" :href="route('listing.create')">Create</Link>
+               <Link class="bg-primary" :href="route('listing.create')">Create</Link>
             </div>
          </nav>
       </div>
