@@ -14,7 +14,7 @@
          </nav>
       </div>
    </header>
-   <main class="container p-4 mx-auto">
+   <main class="container p-4 mx-auto w-full">
       <div v-if="flashMessage" class="mb-4 border rounded-md shadow-sm border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900 p-2">
          {{ flashMessage }}
       </div>
