@@ -25,7 +25,6 @@
 import Box from "@/Components/UI/Box.vue"
 import ListingAddress from "@/Components/ListingAddress.vue"
 import Price from "@/Components/Price.vue"
-import Box from "@/Components/UI/Box.vue"
 import ListingSpace from "@/Components/UI/ListingSpace.vue"
 import { Link } from "@inertiajs/vue3"
 import { useMonthlyPayment } from "@/Composables/useMonthlyPayment"
