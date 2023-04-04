@@ -2,17 +2,23 @@
    <form @submit.prevent="login">
       <div class="w-1/2 mx-auto">
          <div>
-            <label for="email" class="label">Email (username)</label>
+            <label for="email" class="label">Email</label>
             <input v-model="formData.email" type="text" id="email" class="input" />
-            <div class="input-error">
-               Potential errors
+            <div 
+               class="input-error"
+               v-if="formData.errors.email"
+            >
+               {{ formData.errors.email }}
             </div>
          </div>
          <div class="mt-4">
             <label for="password" class="label">Password</label>
             <input v-model="formData.password" type="password" id="password" class="input" />
-            <div class="input-error">
-               Potential errors
+            <div 
+               class="input-error"
+               v-if="formData.errors.password"
+            >
+               {{ formData.errors.password }}
             </div>
          </div>
          <div class="mt-4">
