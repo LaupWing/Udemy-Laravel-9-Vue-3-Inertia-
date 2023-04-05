@@ -13,7 +13,7 @@
          </div>
          <div class="mt-4">
             <label for="name" class="label">Your Name</label>
-            <input v-model="formData.name" type="password" id="name" class="input" />
+            <input v-model="formData.name" type="text" id="name" class="input" />
             <div 
                class="input-error"
                v-if="formData.errors.name"
