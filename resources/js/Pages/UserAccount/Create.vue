@@ -44,6 +44,11 @@
          <div class="mt-4">
             <button class="btn-primary w-full" type="submit">Register</button>
          </div>
+         <div class="mt-4">
+            <div class="mt-2 text-center">
+               <Link :href="route('login')" class="text-sm text-gray-500">ALready have an account? Click here</Link>
+            </div>
+         </div>
       </div>
    </form>
 </template>
