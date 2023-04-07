@@ -5,9 +5,17 @@ namespace App\Policies;
 use Illuminate\Auth\Access\Response;
 use App\Models\Listing;
 use App\Models\User;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ListingPolicy
 {
+   use HandlesAuthorization;
+
+   public function before(?User $user, $ability){
+      if($user?->is_admin /* && $ability == "update" */){
+         return true;
+      }
+   }
    /**
     * Determine whether the user can view any models.
     */
