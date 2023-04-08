@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,7 +29,11 @@ class Listing extends Model
       );
    }
 
-   public function scopeMostRecent($query) {
-      return $query->orderByDesc("created_at");
+   public function scopeMostRecent(Builder $query): Builder {
+      return $query->orderbyDesc("created_at");
+   }
+
+   public function scopeFilter(Builder $query, array $filters){
+
    }
 }
