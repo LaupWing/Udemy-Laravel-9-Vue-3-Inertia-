@@ -23,7 +23,7 @@ class ListingController extends Controller
    {
       return inertia("Listing/Index", [
          "filters" => $request->only(["priceFrom", "priceTo", "areaFrom", "areaTo", "beds", "baths"]),
-         "listings" => Listing::orderByDesc("created_at")->paginate(10)
+         "listings" => Listing::orderByDesc("created_at")->paginate(10)->withQueryString()
       ]);
    }
 
