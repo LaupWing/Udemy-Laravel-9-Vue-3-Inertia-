@@ -27,7 +27,7 @@ watch(() => router.get(
    filterForm,
    {
       preserveState: true,
-      
+      preserveScroll: true  
    }
 ))
 </script>
