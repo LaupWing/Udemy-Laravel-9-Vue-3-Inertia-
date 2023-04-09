@@ -15,8 +15,10 @@ class RealtorListingController extends Controller
    }
 
    public function index(){
+
+      // dd(Auth::user()->listings()->get());
       return inertia(
-         "Realtor/index",
+         "Realtor/Index",
          ["listings" => Auth::user()->listings()]
       );
    }

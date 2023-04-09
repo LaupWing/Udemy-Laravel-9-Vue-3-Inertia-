@@ -44,7 +44,9 @@ import ListingSpace from "@/Components/UI/ListingSpace.vue"
 import { Link } from "@inertiajs/vue3"
 import RealtorFilters from "./Index/Components/RealtorFilters.vue"
 
-defineProps({
+const props = defineProps({
    listings: Array
 })
+
+console.log(props.listings)
 </script>
