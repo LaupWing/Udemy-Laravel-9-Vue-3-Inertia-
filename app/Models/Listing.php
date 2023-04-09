@@ -72,9 +72,6 @@ class Listing extends Model
                !in_array($value, $this->sortable) 
                   ? $query
                   : $query->orderBy($value, $filters["order"] ?? "desc")
-         )->when(
-            $filters["deleted"] ?? false,
-            fn ($query, $value) => $query->withTrashed()
          );
    }
 }

@@ -1,7 +1,7 @@
 <template>
    <form>
       <div class="mb-4 mt-4 flex flex-wrap gap-2">
-         <div class="flex flex-nowrap items-center gap-2">
+         <div class="flex flex-nowrap items-center gap-4">
             <input 
                v-model="filterForm.deleted"
                id="deleted" 
@@ -9,6 +9,14 @@
                class="w-4 h-4 border-gray-300 text-indigo-600 focus:ring-indigo-500" 
             />
             <label for="deleted">Deleted</label>
+         </div>
+
+         <div>
+            <select name="" class="input-filter-l w-24">
+               <option value="">Added</option>
+               <option value="">Added</option>
+            </select>
+            <select name="" class="input-filter-r w-32"></select>
          </div>
       </div>
    </form>
