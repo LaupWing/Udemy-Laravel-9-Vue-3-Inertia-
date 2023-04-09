@@ -37,5 +37,6 @@ Route::prefix("realtor")
    ->name("realtor.")
    ->middleware("auth")
    ->group(function(){
-      Route::resource("listing", RealtorListingController::class);
+      Route::resource("listing", RealtorListingController::class)
+         ->only(["index", "destroy"]);
    });

@@ -15,9 +15,6 @@
       <div>
          <Link :href="route('listing.edit', listing.id)">Edit</Link>
       </div>
-      <div>
-         <Link as="button" :href="route('listing.destroy', listing.id)" method="DELETE">Delete</Link>
-      </div>
    </Box>
 </template>
 
