@@ -23,6 +23,10 @@ class Listing extends Model
       "price"
    ];
 
+   protected $sortable = [
+      "price", "created_at"
+   ];
+
    public function owner(): BelongsTo {
       return $this->belongsTo(
          \App\Models\User::class, 
@@ -59,6 +63,15 @@ class Listing extends Model
          ->when(
             $filters["baths"] ?? false,
             fn ($query, $value) => $query->where("baths", (int)$value < 6 ? "=" : ">=", $value)
+         )->when(
+            $filters["deleted"] ?? false,
+            fn ($query, $value) => $query->withTrashed()
+         )->when(
+            $filters["by"] ?? false,
+            fn ($query, $value) => 
+               !in_array($value, $this->sortable) 
+                  ? $query
+                  : $query->orderBy($value, $filters["order"] ?? "desc")
          )->when(
             $filters["deleted"] ?? false,
             fn ($query, $value) => $query->withTrashed()
