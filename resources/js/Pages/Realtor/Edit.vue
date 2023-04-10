@@ -90,15 +90,5 @@ const formData = useForm({
    price: props.listing.price,
 })
 
-const update = () => router.put(route("listing.update", props.listing.id), formData)
+const update = () => router.put(route("realtor.listing.update", props.listing.id), formData)
 </script>
-
-<style scoped>
-label {
-   margin-right: 2em;
-}
-
-div {
-   padding: 2px;
-}
-</style>

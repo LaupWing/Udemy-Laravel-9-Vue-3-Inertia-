@@ -89,7 +89,7 @@ const formData = useForm({
    price: 0
 })
 
-const create = () => router.post(route("listing.store"), formData)
+const create = () => router.post(route("realtor.listing.store"), formData)
 </script>
 
 <style scoped>

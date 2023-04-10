@@ -14,7 +14,8 @@ class RealtorListingController extends Controller
       $this->authorizeResource(Listing::class, "listing");
    }
 
-   public function index(Request $request){
+   public function index(Request $request)
+   {
       $filters = [
          "deleted" => $request->boolean("deleted"),
          ...$request->only(["by", "order"])
@@ -37,5 +38,60 @@ class RealtorListingController extends Controller
       $listing->deleteOrFail();
 
       return redirect()->back()->with("success", "Listing was deleted!");
+   }
+
+   /**
+    * Show the form for editing the specified resource.
+    */
+   public function edit(Listing $listing)
+   {
+      return inertia("Realtor/Edit", [
+         "listing" => $listing
+      ]);
+   }
+
+   /**
+    * Update the specified resource in storage.
+    */
+   public function update(Request $request, Listing $listing)
+   {
+      $listing->update(
+         $request->validate([
+            "beds" => "required|integer|min:0|max:20",
+            "baths" => "required|integer|min:0|max:20",
+            "area" => "required|integer|min:15|max:1500",
+            "city" => "required",
+            "code" => "required",
+            "street" => "required",
+            "street_number" => "required|min:1|max:1000",
+            "price" => "required|integer|min:1|max:20000000",
+         ])
+      );
+
+      return redirect()->route("realtor.listing.index")->with("success", "Listing was changed!");
+   }
+
+   public function create()
+   {
+      return inertia("Realtor/Create");
+   }
+
+   public function store(Request $request)
+   {
+
+      $request->user()->listings()->create(
+         $request->validate([
+            "beds" => "required|integer|min:0|max:20",
+            "baths" => "required|integer|min:0|max:20",
+            "area" => "required|integer|min:15|max:1500",
+            "city" => "required",
+            "code" => "required",
+            "street" => "required",
+            "street_number" => "required|min:1|max:1000",
+            "price" => "required|integer|min:1|max:20000000",
+         ])
+      );
+
+      return redirect()->route("realtor.listing.index")->with("success", "Listing was created!");
    }
 }
