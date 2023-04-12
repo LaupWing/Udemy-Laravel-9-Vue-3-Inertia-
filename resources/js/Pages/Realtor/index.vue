@@ -35,7 +35,12 @@
                </div>
 
                <div class="mt-2">
-                  <Link class="block w-full btn-outline text-x font-medium text-center" :href="route('realtor.listing.image.create', {listing: listing.id})">Images</Link>
+                  <Link 
+                     class="block w-full btn-outline text-x font-medium text-center" 
+                     :href="route('realtor.listing.image.create', {listing: listing.id})"
+                  >
+                     Images {{ listing.images_count }}
+                  </Link>
                </div>
             </section>
          </div>
