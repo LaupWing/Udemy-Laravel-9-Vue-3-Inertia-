@@ -29,6 +29,14 @@
                Reset
             </button>
          </section>
+         <div v-if="imageErrors.length" class="input-error">
+            <div
+               v-for="(error, index) in imageErrors"
+               :key="index"
+            >
+               {{ error }}
+            </div>
+         </div>
       </form>
    </Box>
    <Box v-if="listing.image.length" class="mt-4">
@@ -79,6 +87,7 @@ router.on("progress", (event) => {
 const formData = useForm({
    images: []
 })
+const imageErrors = computed(() => Object.values(formData.errors))
 
 const canUpload = computed(() => formData.images.length)
 
