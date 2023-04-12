@@ -26,7 +26,14 @@
             </template>
             <div>
                <label class="label">Interest rate ({{ interestRate }}%)</label>
-               <input type="range" min="0.1" max="30" step="0.1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" v-model.number="interestRate">
+               <input 
+                  type="range" 
+                  min="0.1" 
+                  max="30" 
+                  step="0.1" 
+                  class="w-full mt-2 h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" 
+                  v-model.number="interestRate"
+               >
                <label class="label">Duration ({{ duration }} years)</label>
                <input type="range" min="3" max="35" step="1" class="w-full h-4 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" v-model.number="duration">
                <div class="text-gray-600 dark:text-gray-300 mt-2">
@@ -56,6 +63,10 @@
                </div>
             </div>
          </Box>
+         <MakeOffer
+            :listing-id="listing.id"
+            :price="listing.price"
+         />
       </div>
    </div>
 </template>
@@ -67,6 +78,7 @@ import Box from "@/Components/UI/Box.vue"
 import ListingSpace from "@/Components/UI/ListingSpace.vue"
 import {useMonthlyPayment} from "@/Composables/useMonthlyPayment"
 import { ref } from "vue"
+import MakeOffer from "./Show/Components/MakeOffer.vue"
 
 const props = defineProps({
    listing: Object
