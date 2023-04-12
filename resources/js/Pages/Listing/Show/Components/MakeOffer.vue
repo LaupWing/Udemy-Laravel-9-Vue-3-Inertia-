@@ -2,7 +2,7 @@
    <Box>
       <template #header>Make on Offer</template>
       <div>
-         <form>
+         <form @submit.prevent="makeOffer">
             <input 
                type="text" 
                class="input"
@@ -36,7 +36,7 @@
 <script setup>
 import Price from "@/Components/Price.vue"
 import Box from "@/Components/UI/Box.vue"
-import { useForm } from "@inertiajs/vue3"
+import { router, useForm } from "@inertiajs/vue3"
 import { computed } from "vue"
 
 const props = defineProps({
@@ -47,6 +47,18 @@ const props = defineProps({
 const formData = useForm({
    amount: props.price
 })
+
+const makeOffer = () => {
+   formData.post(
+      route("listing.offer.store", {
+         listing: props.listingId
+      }),
+      {
+         preserveScroll: true,
+         preserveState: true
+      }
+   )
+}
 
 const difference = computed(() => { 
    return formData.amount - props.price
