@@ -39,11 +39,23 @@
          <div
             v-for="image in listing.images"
             :key="image.id"
+            class="flex flex-col justify-between"
          >
             <img 
                :src="image.src" 
                class="rounded-md"
             >
+            <Link 
+               :href="route('realtor.listing.image.destroy', { 
+                  listing: props.listing.id, 
+                  image: image.id
+               })"
+               method="delete"
+               as="button"
+               class="mt-2 btn-outline text-xs"
+            >
+               Delete
+            </Link>
          </div>
       </section>
    </Box>
@@ -51,7 +63,7 @@
 
 <script setup>
 import Box from "@/Components/UI/Box.vue"
-import { router, useForm } from "@inertiajs/vue3"
+import { Link, router, useForm } from "@inertiajs/vue3"
 import { computed } from "vue"
 import NProgress from "nprogress"
 
