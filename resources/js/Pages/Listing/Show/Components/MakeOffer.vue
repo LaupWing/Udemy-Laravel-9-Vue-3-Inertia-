@@ -36,7 +36,7 @@
 <script setup>
 import Price from "@/Components/Price.vue"
 import Box from "@/Components/UI/Box.vue"
-import { router, useForm } from "@inertiajs/vue3"
+import { useForm } from "@inertiajs/vue3"
 import { computed } from "vue"
 
 const props = defineProps({
@@ -64,6 +64,6 @@ const difference = computed(() => {
    return formData.amount - props.price
 })
 
-const min = computed(() => props.price / 2)
-const max = computed(() => props.price * 2)
+const min = computed(() => Math.round(props.price / 2))
+const max = computed(() => Math.round(props.price * 2))
 </script>

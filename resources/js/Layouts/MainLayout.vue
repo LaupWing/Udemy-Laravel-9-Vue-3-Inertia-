@@ -32,7 +32,7 @@
 
 <script setup>
 import { Link, usePage } from "@inertiajs/vue3"
-import { computed, ref } from "vue"
+import { computed } from "vue"
 
 const flashMessage = computed(() => usePage().props.flash?.success)
 const user = computed(() => usePage().props.user)
