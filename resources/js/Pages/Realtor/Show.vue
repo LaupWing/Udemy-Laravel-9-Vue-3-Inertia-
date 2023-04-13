@@ -18,7 +18,13 @@
          class="md:col-span-7 items-center"
          v-else
       >
-         
+         <Offer 
+            v-for="offer in listing.offers"
+            :key="offer.id"
+            class="mb-4"
+            :offer="offer"
+            :listing-price="listing.price"
+         />
       </div>
       <Box class="md:col-span-5">
          <template #header>Basic Info</template>
@@ -36,6 +42,7 @@ import Box from "@/Components/UI/Box.vue"
 import ListingSpace from "@/Components/UI/ListingSpace.vue"
 import { Link } from "@inertiajs/vue3"
 import { computed } from "vue"
+import Offer from "./Show/Components/Offer.vue"
 
 const props = defineProps({
    listing: Object
