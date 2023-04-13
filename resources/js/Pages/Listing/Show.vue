@@ -65,6 +65,7 @@
          </Box>
          <MakeOffer
             v-if="user"
+            @offer-updated="offer = $event"
             :listing-id="listing.id"
             :price="listing.price"
          />
@@ -89,7 +90,9 @@ const props = defineProps({
 const interestRate = ref(2.5)
 const duration = ref(25)
 
-const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(props.listing.price, interestRate, duration)
+const { monthlyPayment, totalPaid, totalInterest } = useMonthlyPayment(offer, interestRate, duration)
+
+const offer = ref(props.listing.price)
 
 const user = computed(() => usePage().props.user)
 </script>
