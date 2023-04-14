@@ -25,7 +25,7 @@
          </div>
          <div>
             <Link 
-               v-if="sold"
+               v-if="!isSold"
                class="btn-outline text-xs font-medium" 
                :href="route('realtor.offer.accept', { offer: offer.id })"
                as="button"
@@ -45,12 +45,11 @@ import { Link } from "@inertiajs/vue3"
 import { computed } from "vue"
 
 const props = defineProps({
-   listing: Object,
+   isSold: Boolean,
    offer: Object,
    listingPrice: number
 })
 
-const sold = computed(() => !props.offer.accepted_at && !props.offer.rejected_at)
 const difference = computed(() => props.offer.amount - props.listingPrice)
 
 const madeOn = computed(() => new Date(props.offer.createdAt).toDateString())
