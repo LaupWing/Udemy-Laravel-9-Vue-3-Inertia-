@@ -23,8 +23,9 @@
          <div>
             <Link 
                class="btn-outline text-xs font-medium" 
-               href=""
+               :href="route('realtor.offer.accept', { offer: offer.id })"
                as="button"
+               method="put"
             >
                Accept
             </Link>
