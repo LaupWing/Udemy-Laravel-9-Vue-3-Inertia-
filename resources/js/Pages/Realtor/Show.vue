@@ -15,7 +15,7 @@
          </div>
       </Box>
       <div
-         class="md:col-span-7 items-center"
+         class="md:col-span-7 flex flex-col gap-4"
          v-else
       >
          <Offer 
@@ -26,12 +26,14 @@
             :listing-price="listing.price"
          />
       </div>
-      <Box class="md:col-span-5">
-         <template #header>Basic Info</template>
-         <Price :price="listing.price" class="text2-xl font-bold"/>
-         <ListingSpace :listing="listing" class="text-lg" />
-         <ListingAddress :listing="listing" class="text-gray-500" />
-      </Box>
+      <div class="md:col-span-5">
+         <Box >
+            <template #header>Basic Info</template>
+            <Price :price="listing.price" class="text2-xl font-bold"/>
+            <ListingSpace :listing="listing" class="text-lg" />
+            <ListingAddress :listing="listing" class="text-gray-500" />
+         </Box>
+      </div>
    </section>
 </template>
 

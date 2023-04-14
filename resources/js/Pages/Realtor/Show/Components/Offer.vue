@@ -1,6 +1,9 @@
 <template>
    <Box>
-      <template #header>Offer #{{ offer.id }}</template>
+      <template #header>
+         <span v-if="offer.accepted_at" class="dark:bg-green-900 dark:text-green-200 text-green-900 rounded p-1 uppercase bg-green-200 ml-1">accepted</span>
+         Offer #{{ offer.id }}
+      </template>
 
       <section class="flex items-center justify-between">
          <div>
@@ -22,6 +25,7 @@
          </div>
          <div>
             <Link 
+               v-if="sold"
                class="btn-outline text-xs font-medium" 
                :href="route('realtor.offer.accept', { offer: offer.id })"
                as="button"
@@ -46,6 +50,7 @@ const props = defineProps({
    listingPrice: number
 })
 
+const sold = computed(() => !props.offer.accepted_at && !props.offer.rejected_at)
 const difference = computed(() => props.offer.amount - props.listingPrice)
 
 const madeOn = computed(() => new Date(props.offer.createdAt).toDateString())
