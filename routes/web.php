@@ -43,6 +43,8 @@ Route::resource("notification", NotificationController::class)
    ->middleware("auth")
    ->only(["index"]);
 
+Route::put("notification/{notification}/seen", NotificationController::class)->middleware("auth");
+
 Route::prefix("realtor")
    ->name("realtor.")
    ->middleware("auth")
