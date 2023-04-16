@@ -48,6 +48,12 @@ Route::get("/email/verify/{id}/{hash}", function(EmailVerificationRequest $reque
    return redirect()->route("listing.index")->with("success", "Email was verified");
 })->middleware("auth")->name("verification.verify");
 
+Route::post("/email/verification-notification", function (Request $request) {
+   $request->user()->sendEmailVericationNotification();
+
+   return back()->with("success", "Verification link sent!");
+})->middleware(["auth", "throttle:6,1"])->name("verification.send");
+
 Route::resource("user-account", UserAccountController::class)
    ->only(["create", "store"]);
 
