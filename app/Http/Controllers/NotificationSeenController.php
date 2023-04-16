@@ -9,6 +9,7 @@ use Illuminate\Notifications\DatabaseNotification;
 class NotificationSeenController extends Controller
 {
    public function __invoke(DatabaseNotification $notification) {
+      $this->authorize("update", $notification);
       $notification->markAsRead();
 
       return redirect()->back()->with(
